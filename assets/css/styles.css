@@ -565,6 +565,23 @@
     margin: 20px 0 24px;
   }
 
+  .monaco-editor-host {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    min-height: 140px;
+    overflow: hidden;
+  }
+
+  .monaco-editor-host:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(3,102,214,0.14);
+  }
+
+  .is-hidden-editor-source {
+    display: none !important;
+  }
+
   .CodeMirror {
     background: #f6f8fa;
     border: 1px solid var(--border);
