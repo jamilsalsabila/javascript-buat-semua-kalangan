@@ -562,13 +562,66 @@
   }
 
   .code-runner {
-    margin: -12px 0 24px;
+    margin: 20px 0 24px;
+  }
+
+  .CodeMirror {
+    background: #f6f8fa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    color: #24292e;
+    font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.82em;
+    line-height: 1.6;
+    min-height: 140px;
+    overflow: hidden;
+  }
+
+  .CodeMirror-focused {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(3,102,214,0.14);
+  }
+
+  .CodeMirror-gutters {
+    background: #f6f8fa;
+    border-right: 1px solid #d1d5da;
+  }
+
+  .CodeMirror-linenumber {
+    color: #6a737d;
+    padding: 0 10px 0 6px;
+  }
+
+  .CodeMirror pre.CodeMirror-line,
+  .CodeMirror pre.CodeMirror-line-like {
+    padding: 0 14px;
+  }
+
+  .CodeMirror-lines {
+    padding: 16px 0;
+  }
+
+  .code-editor-fallback {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    color: #24292e;
+    display: block;
+    font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.82em;
+    line-height: 1.6;
+    min-height: 140px;
+    padding: 20px;
+    tab-size: 2;
+    width: 100%;
   }
 
   .code-actions {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 8px;
+    margin: 8px 0;
   }
 
   .run-button,
@@ -648,6 +701,7 @@
   }
 
   @media print {
+    .code-editor,
     .code-actions,
     .runner-output,
     .back-to-toc,

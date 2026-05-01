@@ -148,9 +148,48 @@
   }
 
   function runnableCode(code, language) {
-    if (language === 'typescript') return stripTypescript(code);
+    if (language === 'typescript') return transpileTypescript(code);
     if (language === 'javascript' || language === 'js') return code;
     return null;
+  }
+
+  function transpileTypescript(source) {
+    if (!window.ts) return stripTypescript(source);
+
+    const transpiled = ts.transpileModule(source, {
+      compilerOptions: {
+        module: ts.ModuleKind.None,
+        target: ts.ScriptTarget.ES2020,
+        strict: false,
+        esModuleInterop: true,
+        importHelpers: false,
+        removeComments: false
+      },
+      reportDiagnostics: true
+    });
+
+    const blockingDiagnostics = (transpiled.diagnostics || [])
+      .filter((diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error);
+    if (blockingDiagnostics.length) {
+      throw new Error(formatTypescriptDiagnostics(blockingDiagnostics, source));
+    }
+
+    return transpiled.outputText;
+  }
+
+  function formatTypescriptDiagnostics(diagnostics, source) {
+    const sourceFile = ts.createSourceFile('editor.ts', source, ts.ScriptTarget.ES2020, true);
+    return diagnostics.map((diagnostic) => {
+      const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n');
+      if (typeof diagnostic.start !== 'number') return `TypeScript: ${message}`;
+
+      const position = sourceFile.getLineAndCharacterOfPosition(diagnostic.start);
+      return `TypeScript (${position.line + 1}:${position.character + 1}): ${message}`;
+    }).join('\n');
+  }
+
+  function isRunnableLanguage(language) {
+    return language === 'typescript' || language === 'javascript' || language === 'js';
   }
 
   async function executeCode(source, output) {
@@ -167,7 +206,7 @@
     output.classList.add('is-visible');
 
     try {
-      const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+      const AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
       const fn = new AsyncFunction('console', source);
       await fn(scopedConsole);
       output.querySelector('.runner-output-content').textContent = logs.join('\n') || 'Kode selesai dijalankan tanpa output.';
@@ -194,11 +233,14 @@
       const language = [...(code?.classList || [])]
         .find((name) => name.startsWith('language-'))
         ?.replace('language-', '');
-      const runnerSource = code ? runnableCode(code.textContent, language) : null;
-      if (!runnerSource) return;
+      if (!code || !isRunnableLanguage(language)) return;
 
       const wrapper = document.createElement('div');
       wrapper.className = 'code-runner';
+      const editor = document.createElement('textarea');
+      editor.className = 'code-editor';
+      editor.spellcheck = false;
+      editor.value = code.textContent;
       const actions = document.createElement('div');
       actions.className = 'code-actions';
       const button = document.createElement('button');
@@ -215,18 +257,84 @@
         <pre class="runner-output-content"></pre>
       `;
       const closeButton = output.querySelector('.close-output-button');
+      let codeEditor = null;
 
       button.addEventListener('click', () => {
-        executeCode(runnerSource, output);
+        const currentCode = codeEditor ? codeEditor.getValue() : editor.value;
+        try {
+          executeCode(runnableCode(currentCode, language), output);
+        } catch (error) {
+          showRunnerError(error, output);
+        }
       });
       closeButton.addEventListener('click', () => {
         output.classList.remove('is-visible', 'is-error');
       });
 
       actions.appendChild(button);
-      pre.after(wrapper);
-      wrapper.append(actions, output);
+      pre.replaceWith(wrapper);
+      wrapper.append(editor, actions, output);
+      codeEditor = createCodeEditor(editor, language);
     });
+  }
+
+  function createCodeEditor(textarea, language) {
+    if (!window.CodeMirror) {
+      textarea.classList.add('code-editor-fallback');
+      autosizeFallbackEditor(textarea);
+      textarea.addEventListener('input', () => autosizeFallbackEditor(textarea));
+      textarea.addEventListener('keydown', (event) => {
+        if (event.key !== 'Tab') return;
+        event.preventDefault();
+        insertAtCursor(textarea, '  ');
+        autosizeFallbackEditor(textarea);
+      });
+    return null;
+  }
+
+  function showRunnerError(error, output) {
+    output.classList.add('is-visible', 'is-error');
+    output.querySelector('.runner-output-content').textContent = error?.message || String(error);
+  }
+
+    const editor = CodeMirror.fromTextArea(textarea, {
+      mode: {
+        name: 'javascript',
+        typescript: language === 'typescript'
+      },
+      theme: 'eclipse',
+      lineNumbers: true,
+      indentUnit: 2,
+      tabSize: 2,
+      indentWithTabs: false,
+      lineWrapping: true,
+      viewportMargin: Infinity,
+      extraKeys: {
+        Tab(cm) {
+          if (cm.somethingSelected()) {
+            cm.indentSelection('add');
+            return;
+          }
+          cm.replaceSelection('  ', 'end');
+        }
+      }
+    });
+
+    editor.setSize('100%', 'auto');
+    return editor;
+  }
+
+  function autosizeFallbackEditor(editor) {
+    editor.style.height = 'auto';
+    editor.style.height = `${Math.max(editor.scrollHeight, 140)}px`;
+  }
+
+  function insertAtCursor(editor, text) {
+    const start = editor.selectionStart;
+    const end = editor.selectionEnd;
+    editor.value = `${editor.value.slice(0, start)}${text}${editor.value.slice(end)}`;
+    editor.selectionStart = editor.selectionEnd = start + text.length;
+    editor.dispatchEvent(new Event('input'));
   }
 
   function addBackToTocButton() {
