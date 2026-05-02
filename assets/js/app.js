@@ -4,6 +4,7 @@
   const toc = document.querySelector('#daftar-isi');
   let monacoReady = null;
   let monacoIntellisenseConfigured = false;
+  let monacoModelCounter = 0;
 
   function slugify(text) {
     return text
@@ -316,10 +317,13 @@
     monacoReady = new Promise((resolve) => {
       try {
         window.MonacoEnvironment = {
-          getWorker() {
+          getWorker(_, label) {
+            const workerPath = label === 'typescript' || label === 'javascript'
+              ? `${MONACO_VS_BASE}/language/typescript/ts.worker.js`
+              : `${MONACO_VS_BASE}/editor/editor.worker.js`;
             const workerSource = `
               self.MonacoEnvironment = { baseUrl: '${MONACO_VS_BASE}/' };
-              importScripts('${MONACO_VS_BASE}/base/worker/workerMain.js');
+              importScripts('${workerPath}');
             `;
             const blob = new Blob([workerSource], { type: 'text/javascript' });
             return new Worker(URL.createObjectURL(blob));
@@ -358,10 +362,15 @@
       checkJs: true,
       strict: false,
       noEmit: true,
+      isolatedModules: true,
       esModuleInterop: true,
       allowSyntheticDefaultImports: true,
       typeRoots: ['node_modules/@types']
     };
+
+    if (monaco.languages.typescript.ModuleDetectionKind?.Force !== undefined) {
+      compilerOptions.moduleDetection = monaco.languages.typescript.ModuleDetectionKind.Force;
+    }
 
     monaco.languages.typescript.javascriptDefaults.setCompilerOptions(compilerOptions);
     monaco.languages.typescript.typescriptDefaults.setCompilerOptions(compilerOptions);
@@ -450,10 +459,104 @@ declare module "chalk" {
 
     monaco.languages.typescript.javascriptDefaults.addExtraLib(tutorialTypes, 'file:///tutorial-types.d.ts');
     monaco.languages.typescript.typescriptDefaults.addExtraLib(tutorialTypes, 'file:///tutorial-types.d.ts');
+    registerGlobalIntellisense(monaco, 'javascript');
+    registerGlobalIntellisense(monaco, 'typescript');
     registerConsoleIntellisense(monaco, 'javascript');
     registerConsoleIntellisense(monaco, 'typescript');
     registerTutorialSnippets(monaco, 'javascript');
     registerTutorialSnippets(monaco, 'typescript');
+  }
+
+  function registerGlobalIntellisense(monaco, language) {
+    const globals = [
+      ['console', 'Global console object untuk logging dan debugging.', 'const console: Console'],
+      ['fetch', 'Mengirim HTTP request dan mengembalikan Promise<Response>.', 'function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>'],
+      ['setTimeout', 'Menjalankan fungsi sekali setelah delay tertentu.', 'function setTimeout(handler: TimerHandler, timeout?: number, ...args: any[]): number'],
+      ['setInterval', 'Menjalankan fungsi berulang tiap interval tertentu.', 'function setInterval(handler: TimerHandler, timeout?: number, ...args: any[]): number'],
+      ['clearTimeout', 'Membatalkan timer dari setTimeout.', 'function clearTimeout(id?: number): void'],
+      ['clearInterval', 'Membatalkan timer dari setInterval.', 'function clearInterval(id?: number): void'],
+      ['Promise', 'Representasi nilai async yang akan tersedia di masa depan.', 'class Promise<T>'],
+      ['Map', 'Collection key-value dengan key bertipe bebas.', 'class Map<K, V>'],
+      ['Set', 'Collection nilai unik.', 'class Set<T>'],
+      ['Date', 'Objek tanggal dan waktu.', 'class Date'],
+      ['Math', 'Utility matematika statis.', 'namespace Math'],
+      ['JSON', 'Utility parse dan stringify JSON.', 'namespace JSON'],
+      ['Array', 'Constructor dan helper untuk array.', 'class Array<T>'],
+      ['Object', 'Constructor dan helper dasar object.', 'class Object'],
+      ['String', 'Constructor dan helper string.', 'class String'],
+      ['Number', 'Constructor dan helper angka.', 'class Number'],
+      ['Boolean', 'Constructor dan helper boolean.', 'class Boolean'],
+      ['Error', 'Base class untuk error.', 'class Error'],
+      ['URL', 'Representasi dan parser URL.', 'class URL'],
+      ['parseInt', 'Mengubah string menjadi integer.', 'function parseInt(string: string, radix?: number): number'],
+      ['parseFloat', 'Mengubah string menjadi angka pecahan.', 'function parseFloat(string: string): number'],
+      ['isNaN', 'Mengecek apakah sebuah nilai adalah NaN.', 'function isNaN(number: number): boolean'],
+      ['Bun', 'Runtime Bun untuk server, env, file, dan utilitas lain.', 'const Bun: BunRuntime']
+    ];
+
+    const keywords = [
+      ['const', 'Deklarasi binding yang tidak bisa di-reassign.', 'const nama = value'],
+      ['let', 'Deklarasi variabel block-scoped.', 'let nama = value'],
+      ['function', 'Deklarasi fungsi.', 'function nama() {}'],
+      ['class', 'Deklarasi class.', 'class NamaClass {}'],
+      ['interface', 'Kontrak struktur object di TypeScript.', 'interface NamaInterface {}'],
+      ['type', 'Alias tipe di TypeScript.', 'type NamaType = ...'],
+      ['extends', 'Pewarisan class atau perluasan interface.', 'class Anak extends Induk {}'],
+      ['implements', 'Implementasi interface oleh class.', 'class Kelas implements Interface {}'],
+      ['async', 'Menandai fungsi asynchronous.', 'async function nama() {}'],
+      ['await', 'Menunggu Promise selesai di dalam async function.', 'const hasil = await promise'],
+      ['try', 'Memulai blok penanganan error.', 'try { ... } catch (error) { ... }'],
+      ['catch', 'Menangkap error dari blok try.', 'catch (error) { ... }'],
+      ['return', 'Mengembalikan nilai dari fungsi.', 'return nilai']
+    ];
+
+    const globalLookup = new Map([...globals, ...keywords].map((item) => [item[0], item]));
+
+    monaco.languages.registerCompletionItemProvider(language, {
+      provideCompletionItems(model, position) {
+        const word = model.getWordUntilPosition(position);
+        const range = {
+          startLineNumber: position.lineNumber,
+          endLineNumber: position.lineNumber,
+          startColumn: word.startColumn,
+          endColumn: word.endColumn
+        };
+        const prefix = word.word.toLowerCase();
+        const suggestions = [...globals, ...keywords]
+          .filter(([label]) => !prefix || label.toLowerCase().startsWith(prefix))
+          .map(([label, documentation, signature]) => ({
+            label,
+            kind: keywords.some((item) => item[0] === label)
+              ? monaco.languages.CompletionItemKind.Keyword
+              : monaco.languages.CompletionItemKind.Function,
+            detail: signature,
+            documentation,
+            insertText: label,
+            range
+          }));
+
+        return { suggestions };
+      }
+    });
+
+    monaco.languages.registerHoverProvider(language, {
+      provideHover(model, position) {
+        const word = model.getWordAtPosition(position);
+        if (!word) return null;
+
+        const item = globalLookup.get(word.word);
+        if (!item) return null;
+
+        const [label, documentation, signature] = item;
+        return {
+          range: new monaco.Range(position.lineNumber, word.startColumn, position.lineNumber, word.endColumn),
+          contents: [
+            { value: `\`\`\`ts\n${signature}\n\`\`\`` },
+            { value: `**${label}** - ${documentation}` }
+          ]
+        };
+      }
+    });
   }
 
   function registerConsoleIntellisense(monaco, language) {
@@ -619,10 +722,15 @@ declare module "chalk" {
     host.className = 'monaco-editor-host';
     textarea.after(host);
     textarea.classList.add('is-hidden-editor-source');
+    const modelUri = monaco.Uri.parse(`file:///tutorial-${++monacoModelCounter}.${language === 'typescript' ? 'ts' : 'js'}`);
+    const model = monaco.editor.createModel(
+      textarea.value,
+      language === 'typescript' ? 'typescript' : 'javascript',
+      modelUri
+    );
 
     const editor = monaco.editor.create(host, {
-      value: textarea.value,
-      language: language === 'typescript' ? 'typescript' : 'javascript',
+      model,
       theme: 'vs',
       automaticLayout: true,
       minimap: { enabled: false },
@@ -640,7 +748,18 @@ declare module "chalk" {
       suggestOnTriggerCharacters: true,
       acceptSuggestionOnEnter: 'on',
       parameterHints: { enabled: true },
-      hover: { enabled: true }
+      hover: { enabled: true },
+      snippetSuggestions: 'top',
+      suggest: {
+        showMethods: true,
+        showFunctions: true,
+        showConstructors: true,
+        showVariables: true,
+        showClasses: true,
+        showModules: true,
+        showKeywords: true,
+        showSnippets: true
+      }
     });
 
     resizeMonacoEditor(editor, host);
