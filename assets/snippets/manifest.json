@@ -1,0 +1,714 @@
+[
+  {
+    "blockId": "snippet-001",
+    "chapter": 2,
+    "chapterDir": "bab-02",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-02/terminal.sh"
+  },
+  {
+    "blockId": "snippet-002",
+    "chapter": 2,
+    "chapterDir": "bab-02",
+    "label": "PowerShell",
+    "language": "bash",
+    "file": "bab-02/powershell.ps1"
+  },
+  {
+    "blockId": "snippet-003",
+    "chapter": 2,
+    "chapterDir": "bab-02",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-02/terminal-02.sh"
+  },
+  {
+    "blockId": "snippet-004",
+    "chapter": 2,
+    "chapterDir": "bab-02",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-02/terminal-03.sh"
+  },
+  {
+    "blockId": "snippet-005",
+    "chapter": 2,
+    "chapterDir": "bab-02",
+    "label": "index.ts",
+    "language": "typescript",
+    "file": "bab-02/index.ts"
+  },
+  {
+    "blockId": "snippet-006",
+    "chapter": 2,
+    "chapterDir": "bab-02",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-02/terminal-04.sh"
+  },
+  {
+    "blockId": "snippet-007",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "variabel.ts",
+    "language": "typescript",
+    "file": "bab-03/variabel.ts"
+  },
+  {
+    "blockId": "snippet-008",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "strings.ts",
+    "language": "typescript",
+    "file": "bab-03/strings.ts"
+  },
+  {
+    "blockId": "snippet-009",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "numbers.ts",
+    "language": "typescript",
+    "file": "bab-03/numbers.ts"
+  },
+  {
+    "blockId": "snippet-010",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "boolean.ts",
+    "language": "typescript",
+    "file": "bab-03/boolean.ts"
+  },
+  {
+    "blockId": "snippet-011",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "null-undefined.ts",
+    "language": "typescript",
+    "file": "bab-03/null-undefined.ts"
+  },
+  {
+    "blockId": "snippet-012",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "symbol-bigint.ts",
+    "language": "typescript",
+    "file": "bab-03/symbol-bigint.ts"
+  },
+  {
+    "blockId": "snippet-013",
+    "chapter": 3,
+    "chapterDir": "bab-03",
+    "label": "type-annotations.ts",
+    "language": "typescript",
+    "file": "bab-03/type-annotations.ts"
+  },
+  {
+    "blockId": "snippet-014",
+    "chapter": 4,
+    "chapterDir": "bab-04",
+    "label": "operator-aritmatika.ts",
+    "language": "typescript",
+    "file": "bab-04/operator-aritmatika.ts"
+  },
+  {
+    "blockId": "snippet-015",
+    "chapter": 4,
+    "chapterDir": "bab-04",
+    "label": "operator-perbandingan.ts",
+    "language": "typescript",
+    "file": "bab-04/operator-perbandingan.ts"
+  },
+  {
+    "blockId": "snippet-016",
+    "chapter": 4,
+    "chapterDir": "bab-04",
+    "label": "operator-logika.ts",
+    "language": "typescript",
+    "file": "bab-04/operator-logika.ts"
+  },
+  {
+    "blockId": "snippet-017",
+    "chapter": 4,
+    "chapterDir": "bab-04",
+    "label": "ternary.ts",
+    "language": "typescript",
+    "file": "bab-04/ternary.ts"
+  },
+  {
+    "blockId": "snippet-018",
+    "chapter": 4,
+    "chapterDir": "bab-04",
+    "label": "typeof.ts",
+    "language": "typescript",
+    "file": "bab-04/typeof.ts"
+  },
+  {
+    "blockId": "snippet-019",
+    "chapter": 5,
+    "chapterDir": "bab-05",
+    "label": "if-dasar.ts",
+    "language": "typescript",
+    "file": "bab-05/if-dasar.ts"
+  },
+  {
+    "blockId": "snippet-020",
+    "chapter": 5,
+    "chapterDir": "bab-05",
+    "label": "if-else.ts",
+    "language": "typescript",
+    "file": "bab-05/if-else.ts"
+  },
+  {
+    "blockId": "snippet-021",
+    "chapter": 5,
+    "chapterDir": "bab-05",
+    "label": "if-else-if.ts",
+    "language": "typescript",
+    "file": "bab-05/if-else-if.ts"
+  },
+  {
+    "blockId": "snippet-022",
+    "chapter": 5,
+    "chapterDir": "bab-05",
+    "label": "switch.ts",
+    "language": "typescript",
+    "file": "bab-05/switch.ts"
+  },
+  {
+    "blockId": "snippet-023",
+    "chapter": 5,
+    "chapterDir": "bab-05",
+    "label": "kalkulator.ts",
+    "language": "typescript",
+    "file": "bab-05/kalkulator.ts"
+  },
+  {
+    "blockId": "snippet-024",
+    "chapter": 5,
+    "chapterDir": "bab-05",
+    "label": "type-guard.ts",
+    "language": "typescript",
+    "file": "bab-05/type-guard.ts"
+  },
+  {
+    "blockId": "snippet-025",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "for-loop.ts",
+    "language": "typescript",
+    "file": "bab-06/for-loop.ts"
+  },
+  {
+    "blockId": "snippet-026",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "while-loop.ts",
+    "language": "typescript",
+    "file": "bab-06/while-loop.ts"
+  },
+  {
+    "blockId": "snippet-027",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "do-while.ts",
+    "language": "typescript",
+    "file": "bab-06/do-while.ts"
+  },
+  {
+    "blockId": "snippet-028",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "for-of.ts",
+    "language": "typescript",
+    "file": "bab-06/for-of.ts"
+  },
+  {
+    "blockId": "snippet-029",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "for-in.ts",
+    "language": "typescript",
+    "file": "bab-06/for-in.ts"
+  },
+  {
+    "blockId": "snippet-030",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "break-continue.ts",
+    "language": "typescript",
+    "file": "bab-06/break-continue.ts"
+  },
+  {
+    "blockId": "snippet-031",
+    "chapter": 6,
+    "chapterDir": "bab-06",
+    "label": "nested-loop.ts",
+    "language": "typescript",
+    "file": "bab-06/nested-loop.ts"
+  },
+  {
+    "blockId": "snippet-032",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "fungsi-dasar.ts",
+    "language": "typescript",
+    "file": "bab-07/fungsi-dasar.ts"
+  },
+  {
+    "blockId": "snippet-033",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "parameter-default.ts",
+    "language": "typescript",
+    "file": "bab-07/parameter-default.ts"
+  },
+  {
+    "blockId": "snippet-034",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "rest-params.ts",
+    "language": "typescript",
+    "file": "bab-07/rest-params.ts"
+  },
+  {
+    "blockId": "snippet-035",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "return-ganda.ts",
+    "language": "typescript",
+    "file": "bab-07/return-ganda.ts"
+  },
+  {
+    "blockId": "snippet-036",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "higher-order.ts",
+    "language": "typescript",
+    "file": "bab-07/higher-order.ts"
+  },
+  {
+    "blockId": "snippet-037",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "array-methods.ts",
+    "language": "typescript",
+    "file": "bab-07/array-methods.ts"
+  },
+  {
+    "blockId": "snippet-038",
+    "chapter": 7,
+    "chapterDir": "bab-07",
+    "label": "rekursi.ts",
+    "language": "typescript",
+    "file": "bab-07/rekursi.ts"
+  },
+  {
+    "blockId": "snippet-039",
+    "chapter": 8,
+    "chapterDir": "bab-08",
+    "label": "array-mendalam.ts",
+    "language": "typescript",
+    "file": "bab-08/array-mendalam.ts"
+  },
+  {
+    "blockId": "snippet-040",
+    "chapter": 8,
+    "chapterDir": "bab-08",
+    "label": "object-mendalam.ts",
+    "language": "typescript",
+    "file": "bab-08/object-mendalam.ts"
+  },
+  {
+    "blockId": "snippet-041",
+    "chapter": 8,
+    "chapterDir": "bab-08",
+    "label": "array-of-objects.ts",
+    "language": "typescript",
+    "file": "bab-08/array-of-objects.ts"
+  },
+  {
+    "blockId": "snippet-042",
+    "chapter": 8,
+    "chapterDir": "bab-08",
+    "label": "map-set.ts",
+    "language": "typescript",
+    "file": "bab-08/map-set.ts"
+  },
+  {
+    "blockId": "snippet-043",
+    "chapter": 9,
+    "chapterDir": "bab-09",
+    "label": "class-dasar.ts",
+    "language": "typescript",
+    "file": "bab-09/class-dasar.ts"
+  },
+  {
+    "blockId": "snippet-044",
+    "chapter": 9,
+    "chapterDir": "bab-09",
+    "label": "access-modifiers.ts",
+    "language": "typescript",
+    "file": "bab-09/access-modifiers.ts"
+  },
+  {
+    "blockId": "snippet-045",
+    "chapter": 9,
+    "chapterDir": "bab-09",
+    "label": "static.ts",
+    "language": "typescript",
+    "file": "bab-09/static.ts"
+  },
+  {
+    "blockId": "snippet-046",
+    "chapter": 10,
+    "chapterDir": "bab-10",
+    "label": "inheritance-dasar.ts",
+    "language": "typescript",
+    "file": "bab-10/inheritance-dasar.ts"
+  },
+  {
+    "blockId": "snippet-047",
+    "chapter": 10,
+    "chapterDir": "bab-10",
+    "label": "polymorphism.ts",
+    "language": "typescript",
+    "file": "bab-10/polymorphism.ts"
+  },
+  {
+    "blockId": "snippet-048",
+    "chapter": 10,
+    "chapterDir": "bab-10",
+    "label": "abstract.ts",
+    "language": "typescript",
+    "file": "bab-10/abstract.ts"
+  },
+  {
+    "blockId": "snippet-049",
+    "chapter": 11,
+    "chapterDir": "bab-11",
+    "label": "interface-dasar.ts",
+    "language": "typescript",
+    "file": "bab-11/interface-dasar.ts"
+  },
+  {
+    "blockId": "snippet-050",
+    "chapter": 11,
+    "chapterDir": "bab-11",
+    "label": "interface-method.ts",
+    "language": "typescript",
+    "file": "bab-11/interface-method.ts"
+  },
+  {
+    "blockId": "snippet-051",
+    "chapter": 11,
+    "chapterDir": "bab-11",
+    "label": "interface-extends.ts",
+    "language": "typescript",
+    "file": "bab-11/interface-extends.ts"
+  },
+  {
+    "blockId": "snippet-052",
+    "chapter": 11,
+    "chapterDir": "bab-11",
+    "label": "type-alias.ts",
+    "language": "typescript",
+    "file": "bab-11/type-alias.ts"
+  },
+  {
+    "blockId": "snippet-053",
+    "chapter": 12,
+    "chapterDir": "bab-12",
+    "label": "tanpa-generics.ts",
+    "language": "typescript",
+    "file": "bab-12/tanpa-generics.ts"
+  },
+  {
+    "blockId": "snippet-054",
+    "chapter": 12,
+    "chapterDir": "bab-12",
+    "label": "generic-constraint.ts",
+    "language": "typescript",
+    "file": "bab-12/generic-constraint.ts"
+  },
+  {
+    "blockId": "snippet-055",
+    "chapter": 12,
+    "chapterDir": "bab-12",
+    "label": "generic-class.ts",
+    "language": "typescript",
+    "file": "bab-12/generic-class.ts"
+  },
+  {
+    "blockId": "snippet-056",
+    "chapter": 13,
+    "chapterDir": "bab-13",
+    "label": "try-catch.ts",
+    "language": "typescript",
+    "file": "bab-13/try-catch.ts"
+  },
+  {
+    "blockId": "snippet-057",
+    "chapter": 13,
+    "chapterDir": "bab-13",
+    "label": "custom-error.ts",
+    "language": "typescript",
+    "file": "bab-13/custom-error.ts"
+  },
+  {
+    "blockId": "snippet-058",
+    "chapter": 14,
+    "chapterDir": "bab-14",
+    "label": "sync-vs-async.ts",
+    "language": "typescript",
+    "file": "bab-14/sync-vs-async.ts"
+  },
+  {
+    "blockId": "snippet-059",
+    "chapter": 14,
+    "chapterDir": "bab-14",
+    "label": "promise.ts",
+    "language": "typescript",
+    "file": "bab-14/promise.ts"
+  },
+  {
+    "blockId": "snippet-060",
+    "chapter": 14,
+    "chapterDir": "bab-14",
+    "label": "async-await.ts",
+    "language": "typescript",
+    "file": "bab-14/async-await.ts"
+  },
+  {
+    "blockId": "snippet-061",
+    "chapter": 15,
+    "chapterDir": "bab-15",
+    "label": "matematika.ts",
+    "language": "typescript",
+    "file": "bab-15/matematika.ts"
+  },
+  {
+    "blockId": "snippet-062",
+    "chapter": 15,
+    "chapterDir": "bab-15",
+    "label": "main.ts",
+    "language": "typescript",
+    "file": "bab-15/main.ts"
+  },
+  {
+    "blockId": "snippet-063",
+    "chapter": 15,
+    "chapterDir": "bab-15",
+    "label": "logger.ts",
+    "language": "typescript",
+    "file": "bab-15/logger.ts"
+  },
+  {
+    "blockId": "snippet-064",
+    "chapter": 15,
+    "chapterDir": "bab-15",
+    "label": "app.ts",
+    "language": "typescript",
+    "file": "bab-15/app.ts"
+  },
+  {
+    "blockId": "snippet-065",
+    "chapter": 15,
+    "chapterDir": "bab-15",
+    "label": "index.ts (barrel)",
+    "language": "typescript",
+    "file": "bab-15/index-barrel.ts"
+  },
+  {
+    "blockId": "snippet-066",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-16/terminal.sh"
+  },
+  {
+    "blockId": "snippet-067",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "zod-demo.ts",
+    "language": "typescript",
+    "file": "bab-16/zod-demo.ts"
+  },
+  {
+    "blockId": "snippet-068",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-16/terminal-02.sh"
+  },
+  {
+    "blockId": "snippet-069",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "dayjs-demo.ts",
+    "language": "typescript",
+    "file": "bab-16/dayjs-demo.ts"
+  },
+  {
+    "blockId": "snippet-070",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-16/terminal-03.sh"
+  },
+  {
+    "blockId": "snippet-071",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "lodash-demo.ts",
+    "language": "typescript",
+    "file": "bab-16/lodash-demo.ts"
+  },
+  {
+    "blockId": "snippet-072",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-16/terminal-04.sh"
+  },
+  {
+    "blockId": "snippet-073",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "uuid-demo.ts",
+    "language": "typescript",
+    "file": "bab-16/uuid-demo.ts"
+  },
+  {
+    "blockId": "snippet-074",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-16/terminal-05.sh"
+  },
+  {
+    "blockId": "snippet-075",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "chalk-demo.ts",
+    "language": "typescript",
+    "file": "bab-16/chalk-demo.ts"
+  },
+  {
+    "blockId": "snippet-076",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-16/terminal-06.sh"
+  },
+  {
+    "blockId": "snippet-077",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": ".env",
+    "language": "bash",
+    "file": "bab-16/.env"
+  },
+  {
+    "blockId": "snippet-078",
+    "chapter": 16,
+    "chapterDir": "bab-16",
+    "label": "config.ts",
+    "language": "typescript",
+    "file": "bab-16/config.ts"
+  },
+  {
+    "blockId": "snippet-079",
+    "chapter": 17,
+    "chapterDir": "bab-17",
+    "label": "server-sederhana.ts",
+    "language": "typescript",
+    "file": "bab-17/server-sederhana.ts"
+  },
+  {
+    "blockId": "snippet-080",
+    "chapter": 17,
+    "chapterDir": "bab-17",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-17/terminal.sh"
+  },
+  {
+    "blockId": "snippet-081",
+    "chapter": 17,
+    "chapterDir": "bab-17",
+    "label": "api-todo.ts",
+    "language": "typescript",
+    "file": "bab-17/api-todo.ts"
+  },
+  {
+    "blockId": "snippet-082",
+    "chapter": 18,
+    "chapterDir": "bab-18",
+    "label": "matematika.test.ts",
+    "language": "typescript",
+    "file": "bab-18/matematika.test.ts"
+  },
+  {
+    "blockId": "snippet-083",
+    "chapter": 18,
+    "chapterDir": "bab-18",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-18/terminal.sh"
+  },
+  {
+    "blockId": "snippet-084",
+    "chapter": 18,
+    "chapterDir": "bab-18",
+    "label": "service.test.ts",
+    "language": "typescript",
+    "file": "bab-18/service.test.ts"
+  },
+  {
+    "blockId": "snippet-085",
+    "chapter": 19,
+    "chapterDir": "bab-19",
+    "label": "sqlite-demo.ts",
+    "language": "typescript",
+    "file": "bab-19/sqlite-demo.ts"
+  },
+  {
+    "blockId": "snippet-086",
+    "chapter": 19,
+    "chapterDir": "bab-19",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-19/terminal.sh"
+  },
+  {
+    "blockId": "snippet-087",
+    "chapter": 19,
+    "chapterDir": "bab-19",
+    "label": "prisma/schema.prisma",
+    "language": "bash",
+    "file": "bab-19/prisma/schema.prisma"
+  },
+  {
+    "blockId": "snippet-088",
+    "chapter": 19,
+    "chapterDir": "bab-19",
+    "label": "terminal",
+    "language": "bash",
+    "file": "bab-19/terminal-02.sh"
+  },
+  {
+    "blockId": "snippet-089",
+    "chapter": 19,
+    "chapterDir": "bab-19",
+    "label": "prisma-demo.ts",
+    "language": "typescript",
+    "file": "bab-19/prisma-demo.ts"
+  }
+]

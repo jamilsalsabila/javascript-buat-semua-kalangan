@@ -1,0 +1,24 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Pengguna {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  nama      String
+  pesan     Pesan[]
+  dibuatPada DateTime @default(now())
+}
+
+model Pesan {
+  id        Int      @id @default(autoincrement())
+  isi       String
+  pengguna  Pengguna @relation(fields: [penggunaId], references: [id])
+  penggunaId Int
+  dibuatPada DateTime @default(now())
+}

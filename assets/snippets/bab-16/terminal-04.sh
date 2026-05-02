@@ -1,0 +1,1 @@
+bun add uuid @types/uuid
